@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <title>Health Camp SPA</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/style.css">
+        <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script src="static/common.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+        <script>
+            
+        </script>
+    </head>
+    <body onload="load();createDB();">
+		<form method="POST" action="/">
+        <div>
+            <div class="header">
+                Health Camp SPA
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="tab" onclick="getForm(event,'Demographics')">Demographics</button>
+                <button type="button" class="tab" onclick="getForm(event,'HealthVitals')">Health Vitals</button>
+                <button type="button" class="tab" onclick="getForm(event,'Reports');read();">Reports</button>
+            </div>
+        </div>
+        <div id="Demographics" class="container">
+            <table cellspacing="25" style="float:left;">
+                <tr>
+                    <td>
+                        First Name: 
+						</td>
+						<td>
+						<input type="text" id="f_name" name="f_name" style="border : 2px solid #82CAFF;" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name:  
+						</td>
+						<td>
+						<input type="text" id="l_name" name = "l_name" style="border : 2px solid #82CAFF;" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender:  
+						</td>
+						<td>
+						<select id="gender" name="gender" style="border : 2px solid #82CAFF;" >
+                            <option>select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Age:  
+						</td>
+						<td>
+						<input type="number" id="age" name="age" style="border : 2px solid #82CAFF;" ><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Notes or Other Details:  
+						</td>
+						<td>
+						<input type="text" id="other" style="border : 2px solid #82CAFF;" ><br>
+                    </td>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="getForm(event,'HealthVitals');" class="saveButton">Next</button>
+                    </td>
+                </tr>
+                
+        </table>
+        <table style="float:right;">
+            <br>
+            <tr>
+                <td>
+                    Photo:
+                </td>
+            </tr>
+            <tr>
+                <td class="imageBox">
+                    <img id="img" name="image" style="display:none;" src="#"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type='file' id= "myFile" name="image" onchange="showImage(this);"/>
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div id="HealthVitals" class="container">
+            <table cellspacing="25" style="float:left;">
+                <tr>
+                    <td>
+                        Height:  
+						</td>
+						<td>
+						<input type="text" style="border : 2px solid #82CAFF;" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Weight:  
+						</td>
+						<td>
+						<input type="text" style="border : 2px solid #82CAFF;" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Body Temperature:  
+						</td>
+						<td>
+						<input type="text" style="border : 2px solid #82CAFF;" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pulse Rate:  
+						</td>
+						<td>
+						<input type="text" style="border : 2px solid #82CAFF;" >
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Blood Pressure:  
+						</td>
+						<td>
+						<input type="text" style="border : 2px solid #82CAFF;" >
+                    </td>
+                </tr>
+                <tr>
+
+                </tr>
+                <tr>
+                    <td>
+                        <button onclick="insert();" class="saveButton">Save</button>
+                    </td>
+                </tr>
+                
+        </table>
+        <table style="float:right;">
+            <br>
+            <tr>
+                <td>
+                    Medications:
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea name="medications" id="medications" cols="30" rows="10" style="border : 2px solid #82CAFF;" ></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Notes:
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <textarea name="notes" id="notes" cols="30" rows="10" style="border : 2px solid #82CAFF;" ></textarea>
+                </td>
+            </tr>
+        </table>
+        </div>
+        <div id="Reports" class="container">
+            <table border="1" id="Patient_Details" class="reports">
+                <th colspan="6" style="background-color: #56A5EC">Patients Details</th>
+                <tr style="background-color: #B4CFEC;;">
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+					<th>Photo</th>
+                    <th>Medications</th>
+                    <th>Notes</th>
+                </tr>
+				                    {% for row in result %}
+                    <tr>
+                        {% for key,value in row.items() %}
+                                <td>{{value}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+            </table>
+        </div>
+		</form>
+    </body>
+</html>

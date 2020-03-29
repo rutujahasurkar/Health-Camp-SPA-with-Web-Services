@@ -1,0 +1,86 @@
+.container
+{
+    height: 400px;
+    width: 900px;
+}
+.header
+{
+    height: 26px;
+    width: 900px;
+    background-color: darkblue;
+    color:whitesmoke;
+    font-size: 20px;
+    border: none;
+}
+input[type=text],input[type=number],select
+{
+    height: 35px;
+    width: 250px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Courier New';
+    font-size: 15px;
+}
+body
+{
+    font-family: 'Courier New';
+    margin-top: 150px;
+    margin-left: 270px;
+    font-weight: bold;
+}
+.tab
+{
+    background-color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+    color:whitesmoke;
+    font-size: 20px;
+    border: none;
+    font-family: 'Courier New';
+}
+.saveButton
+{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    width: 220px;
+    text-align: center;
+    font-family: 'Courier New';
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.reports
+{
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 10%;
+    padding: 8px;
+    color: black;
+    font-weight: normal;
+}
+.tab:hover
+{
+    background-color: lightseagreen;
+}
+.tab button.active
+{
+    background-color: blueviolet;
+}
+#Demographics, #HealthVitals, #Reports
+{
+    display: none;
+}
+.imageBox
+{
+    background-color: grey;
+    height: 250px;
+    width: 200px;
+}
